@@ -21,17 +21,14 @@ jobs:
         with:
           java-version: '17'
 
-      - name: Add Permision
-        run: chmod +x gradlew
-
-      - name: Build with Gradle
-        run: ./gradlew bootJar
+      - name: Build with Maven
+        run: mvn clean install
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: '${{ github.workspace }}/build/libs/*.jar'
+          path: '${{ github.workspace }}/target/*.jar'
 
   deploy:
     runs-on: ubuntu-latest
@@ -52,5 +49,5 @@ jobs:
         with:
           app-name: 'spring-auth-service'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_99FE6A9BD833489B97AAA1259261B162 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_168C84AD6C8A4BCEB6E35E170BA96BF9 }}
           package: '*.jar'
