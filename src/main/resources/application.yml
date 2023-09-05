@@ -22,9 +22,9 @@ spring:
     generate-ddl: true
   datasource:
     platform: postgres
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+#    url: ${DB_URL}
+#    username: ${DB_USERNAME}
+#    password: ${DB_PASSWORD}
     initialization-mode: always
     initialize: true
     continue-on-error: true
